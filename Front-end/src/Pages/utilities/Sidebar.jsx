@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
-export function Sidebar() {
+export default function Sidebar() {
   return (
     <nav className="sidebar">
       <ul>
         <li>
-          <NavLink to="/home" activeClassName="active">Home</NavLink>
+          <NavLink to="/dashboard" activeClassName="active">Home</NavLink>
         </li>
         <li>
           <NavLink to="/events" activeClassName="active">Events</NavLink>

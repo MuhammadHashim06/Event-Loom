@@ -81,7 +81,7 @@ export default function Auth() {
 
     if (isLogin) {
       // Redirect to the event page if login is successful
-      navigate("/eventpage");
+      navigate("/dashboard");
     } else {
       // Stay on the login page for signup (or show a message for now)
       setIsLogin(true);

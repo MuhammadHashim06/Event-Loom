@@ -1,0 +1,12 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .dashboard-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+  }
+  

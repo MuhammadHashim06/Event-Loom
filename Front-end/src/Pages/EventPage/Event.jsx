@@ -15,19 +15,12 @@ export default function Event() {
 
   return (
     <div className="event-page">
-      <nav className="sidebar">
-        <ul>
-          <li>Home</li>
-          <li>Events</li>
-          <li>Profile</li>
-          <li>Settings</li>
-        </ul>
-      </nav>
-      <div className="event-container">
-        <div className="event-header">
+      <div className="event-header">
           <h2>Upcoming Events</h2>
           <button className="add-event-btn">Add New Event</button>
         </div>
+      <div className="event-container">
+        
         <input
           type="text"
           placeholder="Search Events..."
