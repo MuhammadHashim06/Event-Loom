@@ -1,28 +1,37 @@
-// import { useState } from "react";
-// import axios from "axios"; // Import axios for making API requests
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 // import "./Event.css";
 
 // export default function Event() {
-//   const [events, setEvents] = useState([
-//     { id: 1, title: "Tech Conference 2025", date: "2025-03-15", location: "New York" },
-//     { id: 2, title: "React Meetup", date: "2025-04-10", location: "San Francisco" },
-//     { id: 3, title: "Startup Pitch Night", date: "2025-05-05", location: "Los Angeles" }
-//   ]);
+//   const [events, setEvents] = useState([]);
 //   const [searchTerm, setSearchTerm] = useState("");
-//   const [showForm, setShowForm] = useState(false); // To toggle the event form
+//   const [showForm, setShowForm] = useState(false);
 //   const [newEvent, setNewEvent] = useState({
 //     title: "",
 //     description: "",
 //     date: "",
 //     location: "",
 //     price: "",
+//     createdBy: JSON.parse(sessionStorage.getItem('userData')).userId, // Get userId from session storage
 //   });
+
+//   // Fetch events from the backend
+//   useEffect(() => {
+//     const fetchEvents = async () => {
+//       try {
+//         const response = await axios.get("http://localhost:5000/api/events");
+//         setEvents(response.data); // Set the events state with the fetched events
+//       } catch (error) {
+//         console.error("There was an error fetching events!", error);
+//       }
+//     };
+//     fetchEvents();
+//   }, []);
 
 //   const filteredEvents = events.filter(event =>
 //     event.title.toLowerCase().includes(searchTerm.toLowerCase())
 //   );
 
-//   // Handle form input changes
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
 //     setNewEvent((prevState) => ({
@@ -31,7 +40,6 @@
 //     }));
 //   };
 
-//   // Handle form submission (add new event)
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
@@ -50,6 +58,13 @@
 //     }
 //   };
 
+//   // Close the modal if clicked outside
+//   const handleModalClose = (e) => {
+//     if (e.target.classList.contains("modal-overlay")) {
+//       setShowForm(false);
+//     }
+//   };
+
 //   return (
 //     <div className="event-page">
 //       <div className="event-container">
@@ -61,50 +76,57 @@
 //         </div>
 
 //         {showForm && (
-//           <form className="add-event-form" onSubmit={handleSubmit}>
-//             <input
-//               type="text"
-//               name="title"
-//               placeholder="Event Title"
-//               value={newEvent.title}
-//               onChange={handleChange}
-//               required
-//             />
-//             <textarea
-//               name="description"
-//               placeholder="Event Description"
-//               value={newEvent.description}
-//               onChange={handleChange}
-//               required
-//             />
-//             <input
-//               type="date"
-//               name="date"
-//               value={newEvent.date}
-//               onChange={handleChange}
-//               required
-//             />
-//             <input
-//               type="text"
-//               name="location"
-//               placeholder="Event Location"
-//               value={newEvent.location}
-//               onChange={handleChange}
-//               required
-//             />
-//             <input
-//               type="number"
-//               name="price"
-//               placeholder="Event Price"
-//               value={newEvent.price}
-//               onChange={handleChange}
-//               required
-//             />
-//             <button type="submit">Create Event</button>
-//             <button type="button" onClick={() => setShowForm(false)}>
-//               Cancel
-//             </button>
-//           </form>
+//           <div className="modal-overlay" onClick={handleModalClose}>
+//             <div className="modal-content">
+//               <h3>Create New Event</h3>
+//               <form className="add-event-form" onSubmit={handleSubmit}>
+//                 <input
+//                   type="text"
+//                   name="title"
+//                   placeholder="Event Title"
+//                   value={newEvent.title}
+//                   onChange={handleChange}
+//                   required
+//                 />
+//                 <textarea
+//                   name="description"
+//                   placeholder="Event Description"
+//                   value={newEvent.description}
+//                   onChange={handleChange}
+//                   required
+//                 />
+//                 <input
+//                   type="date"
+//                   name="date"
+//                   value={newEvent.date}
+//                   onChange={handleChange}
+//                   required
+//                 />
+//                 <input
+//                   type="text"
+//                   name="location"
+//                   placeholder="Event Location"
+//                   value={newEvent.location}
+//                   onChange={handleChange}
+//                   required
+//                 />
+//                 <input
+//                   type="number"
+//                   name="price"
+//                   placeholder="Event Price"
+//                   value={newEvent.price}
+//                   onChange={handleChange}
+//                   required
+//                 />
+//                 <div className="modal-buttons">
+//                   <button type="submit">Create Event</button>
+//                   <button type="button" onClick={() => setShowForm(false)}>
+//                     Cancel
+//                   </button>
+//                 </div>
+//               </form>
+//             </div>
+//           </div>
 //         )}
 
 //         <input
@@ -130,27 +152,37 @@
 
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Event.css";
 
 export default function Event() {
-  const [events, setEvents] = useState([
-    { id: 1, title: "Tech Conference 2025", date: "2025-03-15", location: "New York" },
-    { id: 2, title: "React Meetup", date: "2025-04-10", location: "San Francisco" },
-    { id: 3, title: "Startup Pitch Night", date: "2025-05-05", location: "Los Angeles" }
-  ]);
-  const userData = JSON.parse(sessionStorage.getItem('userData'))
+  const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showForm, setShowForm] = useState(false); 
+  const [showForm, setShowForm] = useState(false);
   const [newEvent, setNewEvent] = useState({
     title: "",
     description: "",
     date: "",
     location: "",
     price: "",
-    createdBy:userData.userId
+    createdBy: JSON.parse(sessionStorage.getItem('userData')).userId, // Get userId from session storage
   });
+
+  const [selectedEvent, setSelectedEvent] = useState(null); // Track selected event for modal
+
+  // Fetch events from the backend
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/events");
+        setEvents(response.data); // Set the events state with the fetched events
+      } catch (error) {
+        console.error("There was an error fetching events!", error);
+      }
+    };
+    fetchEvents();
+  }, []);
 
   const filteredEvents = events.filter(event =>
     event.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -182,10 +214,36 @@ export default function Event() {
     }
   };
 
+  // Open event details modal
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+  };
+
   // Close the modal if clicked outside
   const handleModalClose = (e) => {
     if (e.target.classList.contains("modal-overlay")) {
-      setShowForm(false);
+      setSelectedEvent(null); // Close the modal by resetting the selectedEvent state
+    }
+  };
+
+  // Handle ticket booking
+  const handleBookTicket = async () => {
+    try {
+      
+      // Send the POST request to book the ticket
+      const response = await axios.post("http://localhost:5000/api/tickets", {
+        eventId: selectedEvent._id,
+        userId: JSON.parse(sessionStorage.getItem('userData')).userId, // Get userId from session storage
+      });
+  
+      // Display success message
+      alert(`Ticket booked for ${selectedEvent.title}!`);
+      setSelectedEvent(null); // Close the modal after booking the ticket
+  
+      // You can optionally fetch updated tickets for the user if needed
+    } catch (error) {
+      console.error("There was an error booking the ticket!", error);
+      alert("Failed to book the ticket. Please try again.");
     }
   };
 
@@ -253,6 +311,7 @@ export default function Event() {
           </div>
         )}
 
+        {/* Search Events */}
         <input
           type="text"
           placeholder="Search Events..."
@@ -260,9 +319,11 @@ export default function Event() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+
+        {/* Event List */}
         <ul className="event-list">
           {filteredEvents.map((event) => (
-            <li key={event.id} className="event-item">
+            <li key={event.id} className="event-item" onClick={() => handleEventClick(event)}>
               <h3>{event.title}</h3>
               <p>Date: {event.date}</p>
               <p>Location: {event.location}</p>
@@ -270,6 +331,23 @@ export default function Event() {
           ))}
         </ul>
       </div>
+
+      {/* Event Detail Modal */}
+      {selectedEvent && (
+        <div className="modal-overlay" onClick={handleModalClose}>
+          <div className="modal-content">
+            <h3>{selectedEvent.title}</h3>
+            <p>{selectedEvent.description}</p>
+            <p>Date: {selectedEvent.date}</p>
+            <p>Location: {selectedEvent.location}</p>
+            <p>Price: ${selectedEvent.price}</p>
+            <div className="modal-buttons">
+              <button onClick={handleBookTicket}>Book Ticket</button>
+              <button onClick={handleModalClose}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
