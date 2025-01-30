@@ -1,18 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,  // Removes extra spaces
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      lowercase: true, // Ensures uniqueness is case-insensitive
-      trim: true,
     },
     password: {
       type: String,
@@ -22,4 +20,25 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("User", UserSchema);
+// Pre-save hook to hash the password before saving the user
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+
+  try {
+    // Generate salt and hash the password
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Compare input password with hashed password in the database
+UserSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+export default mongoose.model('User', UserSchema);

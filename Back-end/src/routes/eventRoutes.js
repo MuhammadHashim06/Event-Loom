@@ -25,6 +25,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get Events by User ID (Events created by a specific user)
+router.get("/user/:userId", async (req, res) => {
+  try {
+    const events = await Event.find({ createdBy: req.params.userId }).populate("createdBy", "name email");
+    if (events.length === 0) return res.status(404).json({ message: "No events found for this user" });
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Edit Event
 router.put("/:id", async (req, res) => {
   try {
