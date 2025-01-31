@@ -323,7 +323,7 @@ export default function Event() {
         {/* Event List */}
         <ul className="event-list">
           {filteredEvents.map((event) => (
-            <li key={event.id} className="event-item" onClick={() => handleEventClick(event)}>
+            <li key={event._id} className="event-item" onClick={() => handleEventClick(event)}>
               <h3>{event.title}</h3>
               <p>Date: {event.date}</p>
               <p>Location: {event.location}</p>
