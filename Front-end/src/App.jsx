@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Auth from './Pages/AuthenticationPage/Auth'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Event from './Pages/EventPage/Event'
+import Eventlist from './Pages/EventPage/Eventlist'
 function App() {
 
   return (
@@ -10,7 +11,9 @@ function App() {
       <Routes>
         <Route index element={<Auth />} />
         <Route path="/dashboard/*" element={<Dashboard />}>
-        <Route index element={<Event/>} />
+        <Route path='home' element={<Event/>} />
+        <Route to="events" element={<Eventlist/>} />
+
         </Route>
       </Routes>
     </>

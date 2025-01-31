@@ -6,10 +6,10 @@ export default function Sidebar() {
     <nav className="sidebar">
       <ul>
         <li>
-          <NavLink to="/dashboard" activeClassName="active">Home</NavLink>
+          <NavLink to="/dashboard/home" activeClassName="active">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/events" activeClassName="active">Events</NavLink>
+          <NavLink to="/dashboard/events" activeClassName="active">Events</NavLink>
         </li>
         <li>
           <NavLink to="/profile" activeClassName="active">Profile</NavLink>
