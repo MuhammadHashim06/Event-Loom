@@ -4,6 +4,7 @@ import Auth from './Pages/AuthenticationPage/Auth'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Event from './Pages/EventPage/Event'
 import UserEvents from './Pages/EventPage/UserEvents'
+import UserTickets from './Pages/TicketPage/UserTickets'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="home" element={<Event />} />
           <Route path="events" element={<UserEvents />} />
+          <Route path="tickets" element={<UserTickets />} />
 
         </Route>
         

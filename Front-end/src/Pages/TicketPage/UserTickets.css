@@ -1,0 +1,61 @@
+/* UserTickets.css */
+.user-tickets-page {
+    padding: 20px;
+    margin-left: 250px;
+  }
+  
+  .user-ticket-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-ticket-item {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .user-ticket-item:hover {
+    background: #e0e0e0;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-buttons button:hover {
+    background: #0056b3;
+  }
+  

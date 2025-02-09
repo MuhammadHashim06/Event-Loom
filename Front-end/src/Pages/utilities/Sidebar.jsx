@@ -12,10 +12,10 @@ export default function Sidebar() {
           <NavLink to="/dashboard/events" className={({ isActive }) => (isActive ? 'active' : '')}>Events</NavLink>
         </li>
         <li>
-          <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>Profile</NavLink>
+          <NavLink to="/dashboard/tickets" className={({ isActive }) => (isActive ? 'active' : '')}>My Tickets</NavLink>
         </li>
         <li>
-          <NavLink to="/settings" className={({ isActive }) => (isActive ? 'active' : '')}>Settings</NavLink>
+          <NavLink to="/dashboard/setting" className={({ isActive }) => (isActive ? 'active' : '')}>Settings</NavLink>
         </li>
       </ul>
     </nav>
