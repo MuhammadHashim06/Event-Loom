@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route index element={<Auth />} />
         <Route path="/dashboard/*" element={<Dashboard />}>
-        <Route path='home' element={<Event/>} />
-        <Route to="events" element={<UserEvents/>} />
+          <Route path='home' element={<Event />} />
+          <Route path='events' element={<UserEvents />} />
 
         </Route>
       </Routes>

@@ -6,16 +6,16 @@ export default function Sidebar() {
     <nav className="sidebar">
       <ul>
         <li>
-          <NavLink to="/dashboard/home" activeClassName="active">Home</NavLink>
+          <NavLink to="/dashboard/home" className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/events" activeClassName="active">Events</NavLink>
+          <NavLink to="/dashboard/events" className={({ isActive }) => (isActive ? 'active' : '')}>Events</NavLink>
         </li>
         <li>
-          <NavLink to="/profile" activeClassName="active">Profile</NavLink>
+          <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/settings" activeClassName="active">Settings</NavLink>
+          <NavLink to="/settings" className={({ isActive }) => (isActive ? 'active' : '')}>Settings</NavLink>
         </li>
       </ul>
     </nav>
