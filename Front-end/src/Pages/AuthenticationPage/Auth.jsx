@@ -227,12 +227,14 @@ export default function Auth() {
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
-        <p>
-          {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-          <span onClick={() => setIsLogin(!isLogin)} className="toggle-btn">
-            {isLogin ? "Sign up" : "Login"}
-          </span>
-        </p>
+        <div className="alternate-auth">
+          <p>
+            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            <span onClick={() => setIsLogin(!isLogin)} className="toggle-btn">
+              {isLogin ? "Sign up" : "Login"}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

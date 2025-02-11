@@ -95,3 +95,7 @@ span.toggle-btn {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+.alternate-auth {
+    margin-top: 10px;
+}

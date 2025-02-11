@@ -277,8 +277,10 @@ export default function UserEvents() {
 
   return (
     <div className="user-events-page">
-      <h2>My Events</h2>
-      <button onClick={() => setShowAddEventForm(true)}>Add New Event</button>
+      <div className="header">
+        <h2>My Events</h2>
+        <button className="add-event" onClick={() => setShowAddEventForm(true)}>Add New Event</button>
+      </div>
 
       {showAddEventForm && <AddEvent token={token} onEventAdded={handleEventAdded} />}
 
